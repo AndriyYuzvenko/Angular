@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: black;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.header li a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.header li {
+  padding: 0 20px;
+}
+
+.header li a:active {
+  color: red;
+}
