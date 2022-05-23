@@ -16,4 +16,7 @@ export class PostsDataService {
   getPosts(): Observable<IPosts[]> {
     return this.httpClient.get<IPosts[]>(this._url)
   }
+  getPost(id:string):Observable<IPosts>{
+    return this.httpClient.get<IPosts>(this._url+'/'+id)
+  }
 }

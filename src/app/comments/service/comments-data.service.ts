@@ -16,4 +16,7 @@ export class CommentsDataService {
   getComments(): Observable<IComments[]> {
     return this.httpClient.get<IComments[]>(this._url)
   }
+  getComment(id:string):Observable<IComments>{
+    return this.httpClient.get<IComments>(this._url +'/'+id)
+  }
 }

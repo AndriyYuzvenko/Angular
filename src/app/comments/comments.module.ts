@@ -6,11 +6,15 @@ import {CommentsRoutingModule} from './comments-routing.module';
 import {CommentComponent} from './comment.components/comment/comment.component';
 import {CommentsComponent} from './comments.components/comments/comments.component';
 import {CommentsDataService} from './service/comments-data.service';
+import { CommentsDetailsComponent } from './comments-details/comments-details.component';
+import {CommentsResolver} from "./service/resolvers/comments.resolver";
+import {CommentResolver} from "./service/resolvers/comment.resolver";
 
 @NgModule({
   declarations: [
     CommentComponent,
-    CommentsComponent
+    CommentsComponent,
+    CommentsDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,7 @@ import {CommentsDataService} from './service/comments-data.service';
   exports: [
     CommentComponent
   ],
-  providers: [CommentsDataService]
+  providers: [CommentsDataService,CommentsResolver,CommentResolver]
 })
 export class CommentsModule {
 }

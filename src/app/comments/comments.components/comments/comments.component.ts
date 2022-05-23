@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {IComments} from '../../../models/comments.interfaces';
 import {CommentsDataService} from "../../service/comments-data.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-comments',
@@ -11,11 +12,11 @@ import {CommentsDataService} from "../../service/comments-data.service";
 export class CommentsComponent implements OnInit {
   comments: IComments[];
 
-  constructor(private commentsDataService:CommentsDataService) {
+  constructor(private commentsDataService: CommentsDataService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.commentsDataService.getComments().subscribe(value => this.comments = value)
+    this.activatedRoute.data.subscribe(({commentsData}) => this.comments = commentsData)
   }
 
 }
