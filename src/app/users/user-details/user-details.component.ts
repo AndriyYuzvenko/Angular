@@ -16,9 +16,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({id}) => {
-      this.userDataService.getUser(id).subscribe(value => this.userDetails = value)
-    })
+    this.activatedRoute.data
   }
 
 }
