@@ -6,7 +6,7 @@ import {PostsRoutingModule} from './posts-routing.module';
 import {PostsComponent} from './posts-components/posts/posts.component';
 import {PostComponent} from './post.components/post/post.component';
 import {PostsDataService} from './posts.services/posts-data.service';
-import { PostDetailsComponent } from './post-details/post-details.component';
+import {PostDetailsComponent} from './post-details/post-details.component';
 import {PostResolver} from "./posts.services/resolvers/post.resolver";
 import {PostsResolver} from "./posts.services/resolvers/posts.resolver";
 
@@ -24,7 +24,7 @@ import {PostsResolver} from "./posts.services/resolvers/posts.resolver";
   exports: [
     PostComponent
   ],
-  providers: [PostsDataService,PostResolver,PostsResolver]
+  providers: [PostsDataService, PostResolver, PostsResolver]
 })
 export class PostsModule {
 }

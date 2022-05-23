@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 import {PostsDataService} from '../../posts.services/posts-data.service';
 import {IPosts} from '../../../models/posts.interfaces';
-import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-posts',

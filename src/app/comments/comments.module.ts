@@ -6,7 +6,7 @@ import {CommentsRoutingModule} from './comments-routing.module';
 import {CommentComponent} from './comment.components/comment/comment.component';
 import {CommentsComponent} from './comments.components/comments/comments.component';
 import {CommentsDataService} from './service/comments-data.service';
-import { CommentsDetailsComponent } from './comments-details/comments-details.component';
+import {CommentsDetailsComponent} from './comments-details/comments-details.component';
 import {CommentsResolver} from "./service/resolvers/comments.resolver";
 import {CommentResolver} from "./service/resolvers/comment.resolver";
 
@@ -24,7 +24,7 @@ import {CommentResolver} from "./service/resolvers/comment.resolver";
   exports: [
     CommentComponent
   ],
-  providers: [CommentsDataService,CommentsResolver,CommentResolver]
+  providers: [CommentsDataService, CommentsResolver, CommentResolver]
 })
 export class CommentsModule {
 }

@@ -7,10 +7,11 @@ import {CommentsDetailsComponent} from "./comments-details/comments-details.comp
 import {CommentResolver} from "./service/resolvers/comment.resolver";
 
 const routes: Routes = [
-  {path: '', component: CommentsComponent,
-  resolve:{commentsData:CommentsResolver},
-    children:[
-      {path:':id',component:CommentsDetailsComponent,resolve:{commentData:CommentResolver}}
+  {
+    path: '', component: CommentsComponent,
+    resolve: {commentsData: CommentsResolver},
+    children: [
+      {path: ':id', component: CommentsDetailsComponent, resolve: {commentData: CommentResolver}}
     ]
   }
 ];

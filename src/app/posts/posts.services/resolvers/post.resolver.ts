@@ -4,7 +4,8 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
+
 import {PostsDataService} from "../posts-data.service";
 import {IPosts} from "../../../models/posts.interfaces";
 

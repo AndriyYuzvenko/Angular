@@ -6,9 +6,10 @@ import {UsersRoutingModule} from './users-routing.module';
 import {UsersComponentsComponent} from './users-components/users-components.component';
 import {UserDataService} from './users.services/user-data.service';
 import {UserComponent} from './user/user.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
+import {UserDetailsComponent} from './user-details/user-details.component';
 import {UsersResolver} from "./users.services/resolvers/users.resolver";
 import {UserResolver} from "./users.services/resolvers/user.resolver";
+import {UsersGuard} from "./users.services/guards/users.guard";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {UserResolver} from "./users.services/resolvers/user.resolver";
   exports: [
     UserComponent
   ],
-  providers: [UserDataService,UsersResolver,UserResolver]
+  providers: [UserDataService, UsersResolver, UserResolver, UsersGuard]
 })
 export class UsersModule {
 }
