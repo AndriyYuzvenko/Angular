@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {UserDataService} from "../users.services/user-data.service";
 import {IUsers} from "../../models/users.interfaces";
 
+
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -16,7 +17,9 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.userDataService.getUser(id).subscribe(value => this.userDetails = value)
+    })
   }
 
 }
