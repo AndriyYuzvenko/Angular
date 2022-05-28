@@ -5,15 +5,13 @@ import {
   HttpEvent,
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import {catchError, Observable, switchMap, throwError} from 'rxjs';
+import {catchError, Observable} from 'rxjs';
 import { Router} from "@angular/router";
 
 import {AuthService} from "./services/auth.service";
-import {IToken} from "./interfaces/token.interface";
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
-  isRefreshing = false
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -25,36 +23,19 @@ export class MainInterceptor implements HttpInterceptor {
       request = this.addToken(request, this.authService.getToken())
     }
     return next.handle(request).pipe(
+      // @ts-ignore
       catchError((res: HttpErrorResponse) => {
         if (res && res.error && res.status === 401) {
-          return this.handle401Error(request, next)
-
+          this.authService.deleteToken();
+          this.router.navigate(['login'])
         }
-        return throwError(() => new Error('token invalid or expired'))
       })
-    ) as any;
+    );
   }
 
   addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
     return request.clone({
       setHeaders: {Authorization: `Bearer ${token}`}
     })
-  }
-
-  handle401Error(request: HttpRequest<any>, next: HttpHandler): any {
-    if (!this.isRefreshing) {
-      this.isRefreshing = true;
-      return this.authService.refresh().pipe(
-        switchMap((tokens: IToken) => {
-          return next.handle(this.addToken(request, tokens.access))
-        }),
-        catchError(() => {
-          this.isRefreshing = false
-          this.authService.deleteToken();
-          this.router.navigate(['login'])
-          return throwError(() => new Error('token invalid or expired'))
-        })
-      )
-    }
   }
 }
