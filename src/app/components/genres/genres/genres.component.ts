@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {IGenres} from "../../../models/genres.interface";
-import gendersBaseURL, {api} from "../../../urls/urls";
+import {GenresService} from "../genres-services/genres.service";
 
 @Component({
   selector: 'app-genres',
@@ -10,11 +10,10 @@ import gendersBaseURL, {api} from "../../../urls/urls";
 })
 export class GenresComponent implements OnInit {
 genress:IGenres[]
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private activatedRoute:ActivatedRoute,private genresService:GenresService) { }
 
   ngOnInit(): void {
-    console.log(gendersBaseURL + api.genresAPI)
-    this.activatedRoute.data.subscribe(({genresData})=>console.log(this.genress=genresData))
+    this.activatedRoute.data.subscribe(({genresData}) => console.log(genresData))
   }
 
 }

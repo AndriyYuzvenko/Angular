@@ -5,17 +5,17 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import {Observable} from 'rxjs';
-import {IGenres} from "../../../../models/genres.interface";
+import {IGenre} from "../../../../models/genres.interface";
 import {GenresService} from "../genres.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class GenresResolver implements Resolve<IGenres[]> {
+export class GenresResolver implements Resolve<IGenre> {
   constructor(private genresService: GenresService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IGenres[]> | Promise<IGenres[]> | IGenres[] {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IGenre> | Promise<IGenre> | IGenre {
     return this.genresService.getGenres()
   }
 }
